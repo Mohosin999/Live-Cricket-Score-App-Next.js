@@ -1,0 +1,122 @@
+{
+  "data": {
+    "typeMatches": [
+      {
+        "matchType": "International",
+        "seriesMatches": [
+          {
+            "seriesAdWrapper": {
+              "matches": [
+                {
+                  "seriesId": 8402,
+                  "seriesName": "England tour of India, 2025",
+                  "matchInfo": {
+                    "matchId": 10033,
+                    "seriesId": 8402,
+                    "seriesName": "England tour of India, 2025"
+                  },
+                  "matchScore": {
+                    "team1Score": {
+                      "inngs1": {
+                        "inningsId": 1,
+                        "overs": 40,
+                        "runs": 249,
+                        "wickets": 4
+                      }
+                    }
+                  }
+                },
+                {
+                  "seriesId": 8403,
+                  "seriesName": "Bangladesh tour of Pakistan, 2025",
+                  "matchInfo": {
+                    "matchId": 10034,
+                    "seriesId": 8403,
+                    "seriesName": "Bangladesh tour of Pakistan, 2025"
+                  },
+                  "matchScore": {
+                    "team1Score": {
+                      "inngs1": {
+                        "inningsId": 1,
+                        "overs": 50,
+                        "runs": 220,
+                        "wickets": 9
+                      },
+                      "inngs2": {
+                        "inningsId": 2,
+                        "overs": 45.4,
+                        "runs": 223,
+                        "wickets": 7
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "matchType": "Local - NPL",
+        "seriesMatches": [
+          {
+            "seriesAdWrapper": {
+              "matches": [
+                {
+                  "seriesId": 1022,
+                  "seriesName": "BPL, 2025",
+                  "matchInfo": {
+                    "matchId": 20022,
+                    "seriesId": 1022,
+                    "seriesName": "BPL, 2025"
+                  },
+                  "matchScore": {
+                    "team1Score": {
+                      "inngs1": {
+                        "inningsId": 1,
+                        "overs": 20,
+                        "runs": 178,
+                        "wickets": 9
+                      },
+                      "inngs2": {
+                        "inningsId": 2,
+                        "overs": 19.4,
+                        "runs": 153,
+                        "wickets": 10
+                      }
+                    }
+                  }
+                },
+                {
+                  "seriesId": 3011,
+                  "seriesName": "BPL, 2025",
+                  "matchInfo": {
+                    "matchId": 40112,
+                    "seriesId": 3011,
+                    "seriesName": "BPL, 2025"
+                  },
+                  "matchScore": {
+                    "team1Score": {
+                      "inngs1": {
+                        "inningsId": 1,
+                        "overs": 20,
+                        "runs": 203,
+                        "wickets": 10
+                      },
+                      "inngs2": {
+                        "inningsId": 2,
+                        "overs": 20,
+                        "runs": 189,
+                        "wickets": 10
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
