@@ -13,7 +13,7 @@ const LiveScores = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/cricket");
+        const response = await axios.get("/api/cricketLive");
         console.log("Fetch Response -> ", response);
 
         const liveMatches =
