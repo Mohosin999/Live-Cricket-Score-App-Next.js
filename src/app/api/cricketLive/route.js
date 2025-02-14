@@ -4,7 +4,9 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     // Cricbuzz API URL (Replace with the actual endpoint)
-    const apiUrl = "https://cricbuzz-cricket.p.rapidapi.com/matches/v1/live";
+    // const apiUrl = "https://cricbuzz-cricket.p.rapidapi.com/matches/v1/live";
+    const apiUrl =
+      "https://cricbuzz-cricket.p.rapidapi.com/schedule/v1/international";
 
     // RapidAPI headers (Replace with your actual API key)
     const response = await axios.get(apiUrl, {

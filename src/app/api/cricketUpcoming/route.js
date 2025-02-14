@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     // Cricbuzz API URL (Replace with the actual endpoint)
-    const apiUrl = "https://cricbuzz-live.vercel.app/v1/schedules/list";
+    const apiUrl = "https://cricbuzz-live.vercel.app/schedules/list";
 
     // RapidAPI headers (Replace with your actual API key)
     const response = await axios.get(apiUrl, {
