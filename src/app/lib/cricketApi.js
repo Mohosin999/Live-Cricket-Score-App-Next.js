@@ -19,17 +19,6 @@ export const getLiveMatches = async () => {
   }
 };
 
-// Fetch recent matches
-// export const getRecentMatches = async () => {
-//   try {
-//     const response = await cricketApi.get("/recent");
-//     return response.data;
-//   } catch (error) {
-//     console.error("Error fetching recent matches:", error);
-//     throw error;
-//   }
-// };
-
 // Fetch upcoming matches
 export const getUpcomingMatches = async () => {
   try {
