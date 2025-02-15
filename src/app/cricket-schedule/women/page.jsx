@@ -1,3 +1,5 @@
+import UpcomingMatches from "@/components/UpcomingMatches";
+import Wrapper from "@/components/Wrapper";
 import { getUpcomingWomenMatches } from "@/lib/cricketApi";
 
 const Women = async () => {
@@ -9,9 +11,9 @@ const Women = async () => {
   );
 
   return (
-    <div className="my-10">
+    <Wrapper>
       <UpcomingMatches matches={filteredWomenMatches} />
-    </div>
+    </Wrapper>
   );
 };
 

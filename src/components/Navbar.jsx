@@ -31,16 +31,22 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              href="/live-matches"
+              href="/live-scores"
               className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
             >
-              Live Matches
+              Live Scores
             </Link>
             <Link
-              href="/cricket-schedule"
+              href="/cricket-schedule/international"
               className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
             >
               Schedule
+            </Link>
+            <Link
+              href="/recent-matches"
+              className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Recent Matches
             </Link>
           </div>
 
@@ -71,18 +77,25 @@ const Navbar = () => {
                 Home
               </Link>
               <Link
-                href="/live-matches"
+                href="/live-scores"
                 className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
                 onClick={toggleMobileMenu}
               >
-                Live Matches
+                Live Scores
               </Link>
               <Link
-                href="/upcoming-matches"
+                href="/cricket-schedule/international"
                 className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
                 onClick={toggleMobileMenu}
               >
-                Upcoming Matches
+                Schedule
+              </Link>
+              <Link
+                href="/recent-matches"
+                className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
+                onClick={toggleMobileMenu}
+              >
+                Recent Matches
               </Link>
             </div>
           </div>

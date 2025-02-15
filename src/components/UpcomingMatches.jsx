@@ -23,7 +23,6 @@ const UpcomingMatches = ({ matches }) => {
       weekday: "long",
       hour: "2-digit",
       minute: "2-digit",
-      second: "2-digit",
     });
 
     // Format for user's local time
@@ -32,7 +31,6 @@ const UpcomingMatches = ({ matches }) => {
       weekday: "long",
       hour: "2-digit",
       minute: "2-digit",
-      second: "2-digit",
     });
 
     return { venueTime, userLocalTime };
@@ -41,7 +39,7 @@ const UpcomingMatches = ({ matches }) => {
   if (!matches) return <Loading text="Loading upcoming women matches..." />;
 
   return (
-    <div className="p-4">
+    <div>
       {matches?.length > 0 ? (
         <div>
           {matches.map((match, index) => {
@@ -49,9 +47,9 @@ const UpcomingMatches = ({ matches }) => {
               (item) => item?.matchInfo[0]
             );
 
-            if (!matchInfo) return null; // Skip if matchInfo is missing
+            if (!matchInfo) return null;
 
-            const { startDate, venueInfo } = matchInfo;
+            const { startDate, venueInfo } = matchInfo[0];
             const { venueTime, userLocalTime } = formatMatchTime(
               startDate,
               venueInfo?.timezone
@@ -60,39 +58,43 @@ const UpcomingMatches = ({ matches }) => {
             return (
               <div key={index} className="">
                 {/* Match date */}
-                <p>{match?.scheduleAdWrapper?.date}</p>
+                <p className="text-base font-bold px-6 py-2 bg-gray-300">
+                  {match?.scheduleAdWrapper?.date}
+                </p>
 
-                <div className="my-5">
+                <div className="px-6">
                   {match?.scheduleAdWrapper?.matchScheduleList?.map(
                     (schedule, index) => (
-                      <div key={index}>
+                      <div
+                        key={index}
+                        className="border-b last:border-b-0 py-8"
+                      >
                         {/* Series Name */}
                         <p className="text-base font-bold">
                           {schedule?.seriesName}
                         </p>
 
-                        <div>
-                          {/* Match Title */}
-                          <h3>
-                            {schedule?.matchInfo[0]?.team1?.teamName} vs{" "}
-                            {schedule?.matchInfo[0]?.team2?.teamName},{" "}
-                            {schedule?.matchInfo[0]?.matchDesc}
-                          </h3>
-                          {/* Match Venue */}
-                          <p>
-                            {schedule?.matchInfo[0]?.venueInfo?.ground} •{" "}
-                            {schedule?.matchInfo[0]?.venueInfo?.city}
-                          </p>
-                        </div>
+                        <div className="grid grid-cols-3 gap-4 items-center">
+                          {/* Match Title & Venue */}
+                          <div className="col-span-2 mt-1">
+                            <h3 className="text-sm mb-1">
+                              {schedule?.matchInfo[0]?.team1?.teamName} vs{" "}
+                              {schedule?.matchInfo[0]?.team2?.teamName},{" "}
+                              {schedule?.matchInfo[0]?.matchDesc}
+                            </h3>
+                            <p className="text-xs text-gray-600">
+                              {schedule?.matchInfo[0]?.venueInfo?.ground},{" "}
+                              {schedule?.matchInfo[0]?.venueInfo?.city}
+                            </p>
+                          </div>
 
-                        {/* Match Time */}
-                        <div className="mt-2">
-                          <p>
-                            <strong>Venue Time:</strong> {venueTime}
-                          </p>
-                          <p>
-                            <strong>Your Local Time:</strong> {userLocalTime}
-                          </p>
+                          {/* Match Time */}
+                          <div className="text-right mt-1">
+                            <p className="text-sm mb-1">{venueTime}</p>
+                            <p className="text-xs text-gray-600">
+                              {userLocalTime} (Local Time)
+                            </p>
+                          </div>
                         </div>
                       </div>
                     )

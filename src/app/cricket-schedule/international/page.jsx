@@ -1,4 +1,5 @@
 import UpcomingMatches from "@/components/UpcomingMatches";
+import Wrapper from "@/components/Wrapper";
 import { getUpcomingInterantionalMatches } from "@/lib/cricketApi";
 
 const International = async () => {
@@ -11,9 +12,9 @@ const International = async () => {
     );
 
   return (
-    <div className="my-10">
+    <Wrapper>
       <UpcomingMatches matches={filteredInternationalMatches} />
-    </div>
+    </Wrapper>
   );
 };
 
