@@ -19,7 +19,13 @@ export const getLiveMatches = async () => {
   }
 };
 
-// Fetch upcoming matches
+/**
+ * ======================================================
+ *             Fetch Upcoming Matches
+ * ======================================================
+ */
+
+// Fetch upcoming International matches
 export const getUpcomingInterantionalMatches = async () => {
   try {
     const response = await cricketApi.get("schedule/v1/international");
@@ -30,6 +36,18 @@ export const getUpcomingInterantionalMatches = async () => {
   }
 };
 
+// Fetch upcoming domestic matches
+export const getUpcomingDomesticMatches = async () => {
+  try {
+    const response = await cricketApi.get("schedule/v1/domestic");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching upcoming matches:", error);
+    throw error;
+  }
+};
+
+// Fetch upcoming women matches
 export const getUpcomingWomenMatches = async () => {
   try {
     const response = await cricketApi.get("schedule/v1/women");

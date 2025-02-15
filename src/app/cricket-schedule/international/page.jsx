@@ -1,12 +1,14 @@
-import { getUpcomingWomenMatches } from "@/lib/cricketApi";
+import UpcomingMatches from "@/components/UpcomingMatches";
+import { getUpcomingInterantionalMatches } from "@/lib/cricketApi";
 
 const International = async () => {
-  const internationalMatches = await getUpcomingWomenMatches();
+  const internationalMatches = await getUpcomingInterantionalMatches();
 
   // Filter matches on the server
-  const filteredInternationalMatches = womenMatches?.matchScheduleMap?.filter(
-    (day) => day.scheduleAdWrapper
-  );
+  const filteredInternationalMatches =
+    internationalMatches?.matchScheduleMap?.filter(
+      (day) => day.scheduleAdWrapper
+    );
 
   return (
     <div className="my-10">
