@@ -1,5 +1,5 @@
-import LiveScores from "./components/LiveScores";
-import UpcomingMatches from "./components/UpcomingMatches";
+import LiveScores from "@/components/LiveScores";
+import UpcomingMatches from "@/components/UpcomingMatches";
 
 export default function Home() {
   return (
