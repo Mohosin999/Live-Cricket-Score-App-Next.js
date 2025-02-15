@@ -8,16 +8,19 @@ const UpcomingMatches = () => {
   const [title, setTitle] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log("Upcoming akahs -> ", matches);
+  // console.log("Upcoming akahs -> ", matches);
 
   useEffect(() => {
     const fetchUpcomingMatches = async () => {
       try {
         const data = await getUpcomingMatches();
+        console.log("upcoming data -> ", data);
 
         const filteredMatches = data?.matchScheduleMap?.filter(
           (day) => day.scheduleAdWrapper
         );
+
+        // console.log("upcoming filtered data -> ", filteredMatches);
 
         setMatches(filteredMatches);
         setTitle(data?.appIndex?.seoTitle);

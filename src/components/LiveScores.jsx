@@ -13,11 +13,11 @@ const LiveScores = () => {
     const fetchLiveMatches = async () => {
       try {
         const data = await getLiveMatches();
-        console.log("Live Data -> ", data);
+        console.log("live data -> ", data);
 
         const liveMatches = data?.typeMatches;
 
-        console.log("Hey Akash all data -> ", liveMatches);
+        // console.log("Hey Akash all data -> ", liveMatches);
 
         setMatches(liveMatches);
         setTitle(data?.appIndex?.seoTitle);
