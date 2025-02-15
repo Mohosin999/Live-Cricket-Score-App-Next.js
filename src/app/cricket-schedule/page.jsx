@@ -5,11 +5,21 @@ import {
   getUpcomingWomenMatches,
 } from "@/lib/cricketApi";
 
-const CricketSchedule = () => {
-  const getInternationalMatches = getUpcomingInterantionalMatches;
-  const getWomenMatches = getUpcomingWomenMatches;
+const CricketSchedule = async () => {
+  const internationalMatches = await getUpcomingInterantionalMatches();
+  const womenMatches = await getUpcomingWomenMatches();
+
+  // Filter matches on the server
+  const filteredInternationalMatches =
+    internationalMatches?.matchScheduleMap?.filter(
+      (day) => day.scheduleAdWrapper
+    );
+  const filteredWomenMatches = womenMatches?.matchScheduleMap?.filter(
+    (day) => day.scheduleAdWrapper
+  );
+
   return (
-    <div>
+    <div className="my-10">
       <div className="flex items-center justify-center gap-14">
         <Link href="cricket-schedule/international">International</Link>
         <Link href="cricket-schedule/domestic">Domestic</Link>
@@ -17,8 +27,11 @@ const CricketSchedule = () => {
         <Link href="cricket-schedule/all-matches">All Matches</Link>
       </div>
 
-      <UpcomingMatches getFuncUpcomingMatches={getInternationalMatches} />
-      <UpcomingMatches getFuncUpcomingMatches={getWomenMatches} />
+      {/* Pass filtered data as props */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <UpcomingMatches matches={filteredInternationalMatches} />
+        <UpcomingMatches matches={filteredWomenMatches} />
+      </div>
     </div>
   );
 };

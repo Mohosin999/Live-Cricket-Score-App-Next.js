@@ -1,9 +1,16 @@
-import UpcomingWomenMatches from "@/components/upcoming-matches/UpcomingWomenMatches";
+import { getUpcomingWomenMatches } from "@/lib/cricketApi";
 
-const Women = () => {
+const Women = async () => {
+  const womenMatches = await getUpcomingWomenMatches();
+
+  // Filter matches on the server
+  const filteredWomenMatches = womenMatches?.matchScheduleMap?.filter(
+    (day) => day.scheduleAdWrapper
+  );
+
   return (
-    <div>
-      <UpcomingWomenMatches />
+    <div className="my-10">
+      <UpcomingMatches matches={filteredWomenMatches} />
     </div>
   );
 };
