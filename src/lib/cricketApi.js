@@ -20,9 +20,19 @@ export const getLiveMatches = async () => {
 };
 
 // Fetch upcoming matches
-export const getUpcomingMatches = async () => {
+export const getUpcomingInterantionalMatches = async () => {
   try {
     const response = await cricketApi.get("schedule/v1/international");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching upcoming matches:", error);
+    throw error;
+  }
+};
+
+export const getUpcomingWomenMatches = async () => {
+  try {
+    const response = await cricketApi.get("schedule/v1/women");
     return response.data;
   } catch (error) {
     console.error("Error fetching upcoming matches:", error);

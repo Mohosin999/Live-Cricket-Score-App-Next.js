@@ -1,24 +1,17 @@
 "use client";
-import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import Loading from "./ui/Loading";
 
-/**
- * UpcomingMatches Component
- * A reusable component to display upcoming matches.
- *
- * @param {Object} props - The component props.
- * @param {Function} props.getFuncUpcomingMatches - A function to fetch upcoming matches data.
- * @returns {JSX.Element} - The rendered component.
- */
-const UpcomingMatches = ({ getFuncUpcomingMatches }) => {
+import { useEffect, useState } from "react";
+import { getUpcomingWomenMatches } from "@/lib/cricketApi";
+import Loading from "../ui/Loading";
+
+const UpcomingWomenMatches = () => {
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUpcomingMatches = async () => {
       try {
-        const data = await getFuncUpcomingMatches();
+        const data = await getUpcomingWomenMatches();
 
         const filteredMatches = data?.matchScheduleMap?.filter(
           (day) => day.scheduleAdWrapper
@@ -69,9 +62,8 @@ const UpcomingMatches = ({ getFuncUpcomingMatches }) => {
       {matches?.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {matches.map((match, index) => {
-            const matchInfo = match?.scheduleAdWrapper?.matchScheduleList?.map(
-              (item) => item?.matchInfo[0]
-            );
+            const matchInfo =
+              match?.scheduleAdWrapper?.matchScheduleList[0]?.matchInfo[0];
 
             if (!matchInfo) return null; // Skip if matchInfo is missing
 
@@ -90,40 +82,34 @@ const UpcomingMatches = ({ getFuncUpcomingMatches }) => {
                 <p>{match?.scheduleAdWrapper?.date}</p>
 
                 <div className="my-5">
-                  {match?.scheduleAdWrapper?.matchScheduleList?.map(
-                    (schedule, index) => (
-                      <div key={index}>
-                        {/* Series Name */}
-                        <p className="text-base font-bold">
-                          {schedule?.seriesName}
-                        </p>
+                  {/* Series Name */}
+                  <p className="text-base font-bold">
+                    {match?.scheduleAdWrapper?.matchScheduleList[0]?.seriesName}
+                  </p>
 
-                        <div>
-                          {/* Match Title */}
-                          <h3>
-                            {schedule?.matchInfo[0]?.team1?.teamName} vs{" "}
-                            {schedule?.matchInfo[0]?.team2?.teamName},{" "}
-                            {schedule?.matchInfo[0]?.matchDesc}
-                          </h3>
-                          {/* Match Venue */}
-                          <p>
-                            {schedule?.matchInfo[0]?.venueInfo?.ground} •{" "}
-                            {schedule?.matchInfo[0]?.venueInfo?.city}
-                          </p>
-                        </div>
+                  {/* Match Info */}
+                  <div>
+                    {/* Match Title */}
+                    <h3>
+                      {matchInfo?.team1?.teamName} vs{" "}
+                      {matchInfo?.team2?.teamName}, {matchInfo?.matchDesc}
+                    </h3>
 
-                        {/* Match Time */}
-                        <div className="mt-2">
-                          <p>
-                            <strong>Venue Time:</strong> {venueTime}
-                          </p>
-                          <p>
-                            <strong>Your Local Time:</strong> {userLocalTime}
-                          </p>
-                        </div>
-                      </div>
-                    )
-                  )}
+                    {/* Match Venue */}
+                    <p>
+                      {venueInfo?.ground} • {venueInfo?.city}
+                    </p>
+                  </div>
+
+                  {/* Match Time */}
+                  <div className="mt-2">
+                    <p>
+                      <strong>Venue Time:</strong> {venueTime}
+                    </p>
+                    <p>
+                      <strong>Your Local Time:</strong> {userLocalTime}
+                    </p>
+                  </div>
                 </div>
               </div>
             );
@@ -138,9 +124,4 @@ const UpcomingMatches = ({ getFuncUpcomingMatches }) => {
   );
 };
 
-// PropTypes validation
-UpcomingMatches.propTypes = {
-  getFuncUpcomingMatches: PropTypes.func.isRequired,
-};
-
-export default UpcomingMatches;
+export default UpcomingWomenMatches;

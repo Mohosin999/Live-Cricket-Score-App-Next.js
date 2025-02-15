@@ -37,10 +37,10 @@ const Navbar = () => {
               Live Matches
             </Link>
             <Link
-              href="/upcoming-matches"
+              href="/cricket-schedule"
               className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
             >
-              Upcoming Matches
+              Schedule
             </Link>
           </div>
 

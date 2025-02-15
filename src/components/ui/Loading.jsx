@@ -18,6 +18,7 @@ const Loading = ({ text }) => {
   );
 };
 
+// PropTypes validation
 Loading.propTypes = {
   text: PropTypes.string.isRequired,
 };

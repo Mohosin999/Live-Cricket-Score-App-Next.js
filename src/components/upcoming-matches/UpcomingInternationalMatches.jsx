@@ -1,24 +1,17 @@
 "use client";
-import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import Loading from "./ui/Loading";
 
-/**
- * UpcomingMatches Component
- * A reusable component to display upcoming matches.
- *
- * @param {Object} props - The component props.
- * @param {Function} props.getFuncUpcomingMatches - A function to fetch upcoming matches data.
- * @returns {JSX.Element} - The rendered component.
- */
-const UpcomingMatches = ({ getFuncUpcomingMatches }) => {
+import { useEffect, useState } from "react";
+import { getUpcomingInterantionalMatches } from "@/lib/cricketApi";
+import Loading from "../ui/Loading";
+
+const UpcomingInternationalMatches = () => {
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUpcomingMatches = async () => {
       try {
-        const data = await getFuncUpcomingMatches();
+        const data = await getUpcomingInterantionalMatches();
 
         const filteredMatches = data?.matchScheduleMap?.filter(
           (day) => day.scheduleAdWrapper
@@ -138,9 +131,4 @@ const UpcomingMatches = ({ getFuncUpcomingMatches }) => {
   );
 };
 
-// PropTypes validation
-UpcomingMatches.propTypes = {
-  getFuncUpcomingMatches: PropTypes.func.isRequired,
-};
-
-export default UpcomingMatches;
+export default UpcomingInternationalMatches;
