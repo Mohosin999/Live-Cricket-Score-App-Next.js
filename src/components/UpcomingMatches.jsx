@@ -15,9 +15,9 @@ const UpcomingMatches = () => {
       try {
         const data = await getUpcomingMatches();
 
-        const filteredMatches = data?.matchScheduleMap
-          ?.slice(0, 7)
-          .filter((day) => day.scheduleAdWrapper);
+        const filteredMatches = data?.matchScheduleMap?.filter(
+          (day) => day.scheduleAdWrapper
+        );
 
         setMatches(filteredMatches);
         setTitle(data?.appIndex?.seoTitle);
