@@ -8,7 +8,11 @@ const cricketApi = axios.create({
   },
 });
 
-// Fetch live matches
+/**
+ * ===================================================================
+ *                      Fetch Live matches
+ * ===================================================================
+ */
 export const getLiveMatches = async () => {
   try {
     const response = await cricketApi.get("/matches/v1/live");
@@ -20,9 +24,39 @@ export const getLiveMatches = async () => {
 };
 
 /**
- * ======================================================
- *             Fetch Upcoming Matches
- * ======================================================
+ * ===================================================================
+ *                    Fetch Recent Matches
+ * ===================================================================
+ */
+export const getRecentMatches = async () => {
+  try {
+    const response = await cricketApi.get("/matches/v1/recent");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching live matches:", error);
+    throw error;
+  }
+};
+
+/**
+ * ===================================================================
+ *               Fetch Matches Scorecard by MatchId
+ * ===================================================================
+ */
+export const getMatchesScorecard = async ({ matchId }) => {
+  try {
+    const response = await cricketApi.get(`/matches/v1/${matchId}/scard`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching live matches:", error);
+    throw error;
+  }
+};
+
+/**
+ * ===================================================================
+ *                      Fetch Upcoming Matches
+ * ===================================================================
  */
 
 // Fetch upcoming International matches
