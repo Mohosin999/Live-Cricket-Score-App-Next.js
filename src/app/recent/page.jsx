@@ -1,11 +1,17 @@
 import React from "react";
-import RecentMatches from "@/components/RecentMatches";
 import Wrapper from "@/components/Wrapper";
+import MatchOverview from "@/components/MatchOverview";
+import { getRecentMatches } from "@/lib/cricketApi";
 
-const Recent = () => {
+const Recent = async () => {
+  const recentMatches = await getRecentMatches();
+
+  // Filter matches on the server
+  const filteredRecentMatches = recentMatches?.typeMatches;
+
   return (
     <Wrapper>
-      <RecentMatches />
+      <MatchOverview matches={filteredRecentMatches} />
     </Wrapper>
   );
 };
