@@ -3,7 +3,7 @@ import Wrapper from "@/components/Wrapper";
 import MatchOverview from "@/components/MatchOverview";
 import { getRecentMatches } from "@/lib/cricketApi";
 
-const Recent = async () => {
+const RecentMatches = async () => {
   const recentMatches = await getRecentMatches();
 
   // Filter matches on the server
@@ -16,4 +16,4 @@ const Recent = async () => {
   );
 };
 
-export default Recent;
+export default RecentMatches;

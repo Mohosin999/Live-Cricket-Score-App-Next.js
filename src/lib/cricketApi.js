@@ -43,9 +43,9 @@ export const getRecentMatches = async () => {
  *               Fetch Matches Scorecard by MatchId
  * ===================================================================
  */
-export const getMatchesScorecard = async ({ matchId }) => {
+export const getMatchesScorecard = async (matchId) => {
   try {
-    const response = await cricketApi.get(`/matches/v1/${matchId}/scard`);
+    const response = await cricketApi.get(`/mcenter/v1/${matchId}/scard`);
     return response.data;
   } catch (error) {
     console.error("Error fetching live matches:", error);
