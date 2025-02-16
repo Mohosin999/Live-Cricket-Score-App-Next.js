@@ -31,22 +31,22 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              href="/live-scores"
+              href="/live-matches"
               className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
             >
-              Live Scores
-            </Link>
-            <Link
-              href="/cricket-schedule/international"
-              className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Schedule
+              Live Matches
             </Link>
             <Link
               href="/recent-matches"
               className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
             >
               Recent Matches
+            </Link>
+            <Link
+              href="/cricket-schedule/international"
+              className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Schedule
             </Link>
           </div>
 
@@ -77,11 +77,19 @@ const Navbar = () => {
                 Home
               </Link>
               <Link
-                href="/live-scores"
+                href="/live-matches"
                 className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
                 onClick={toggleMobileMenu}
               >
-                Live Scores
+                Live Matches
+              </Link>
+
+              <Link
+                href="/recent-matches"
+                className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
+                onClick={toggleMobileMenu}
+              >
+                Recent Matches
               </Link>
               <Link
                 href="/cricket-schedule/international"
@@ -89,13 +97,6 @@ const Navbar = () => {
                 onClick={toggleMobileMenu}
               >
                 Schedule
-              </Link>
-              <Link
-                href="/recent-matches"
-                className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
-                onClick={toggleMobileMenu}
-              >
-                Recent Matches
               </Link>
             </div>
           </div>

@@ -19,9 +19,9 @@ const MatchOverview = ({ matches }) => {
 
   return (
     <div>
-      {matches?.length > 0 ? (
+      {matches?.typeMatches?.length > 0 ? (
         <div>
-          {matches.map((match, index) => (
+          {matches?.typeMatches?.map((match, index) => (
             <div key={index}>
               {match?.seriesMatches
                 ?.filter((seriesMatch) => seriesMatch?.seriesAdWrapper)

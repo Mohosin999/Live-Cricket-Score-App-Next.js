@@ -126,7 +126,7 @@ const ScoreCard = ({ matchScores }) => {
                 <span className="font-normal">
                   <span className="font-semibold">
                     {matchScore?.scoreDetails?.runs}
-                  </span>
+                  </span>{" "}
                   ({matchScore?.scoreDetails?.wickets} wkts,{" "}
                   {matchScore?.scoreDetails?.overs} Overs)
                 </span>
@@ -177,7 +177,7 @@ const ScoreCard = ({ matchScores }) => {
               </thead>
               <tbody className="text-sm text-gray-900">
                 <tr key={index}>
-                  <td className="py-2 px-4 text-left font-semibold">
+                  <td className="py-2 px-4 text-left font-semibold capitalize">
                     {matchScore?.ppData?.pp_1?.ppType}
                   </td>
                   <td className="py-2 px-2 text-center">

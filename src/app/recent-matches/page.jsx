@@ -6,12 +6,9 @@ import { getRecentMatches } from "@/lib/cricketApi";
 const RecentMatches = async () => {
   const recentMatches = await getRecentMatches();
 
-  // Filter matches on the server
-  const filteredRecentMatches = recentMatches?.typeMatches;
-
   return (
     <Wrapper>
-      <MatchOverview matches={filteredRecentMatches} />
+      <MatchOverview matches={recentMatches} />
     </Wrapper>
   );
 };
