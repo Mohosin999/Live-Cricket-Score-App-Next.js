@@ -83,17 +83,6 @@ export const getInternationalNews = async () => {
   }
 };
 
-// Get News Image
-export const getNewsImg = async (imageId) => {
-  try {
-    const response = await cricketApi.get(`/img/v1/i1/${imageId}/i.jpg`);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching live matches:", error);
-    throw error;
-  }
-};
-
 /**
  * ===================================================================
  *                      Fetch Upcoming Matches
