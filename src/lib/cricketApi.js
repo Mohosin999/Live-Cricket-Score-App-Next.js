@@ -55,6 +55,47 @@ export const getMatchesScorecard = async (matchId) => {
 
 /**
  * ===================================================================
+ *               Fetch Matches Scorecard by MatchId
+ * ===================================================================
+ */
+export const getSeries = async () => {
+  try {
+    const response = await cricketApi.get("/series/v1/international");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching live matches:", error);
+    throw error;
+  }
+};
+
+/**
+ * ===================================================================
+ *                  Get International News
+ * ===================================================================
+ */
+export const getInternationalNews = async () => {
+  try {
+    const response = await cricketApi.get("/news/v1/index");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching live matches:", error);
+    throw error;
+  }
+};
+
+// Get News Image
+export const getNewsImg = async (imageId) => {
+  try {
+    const response = await cricketApi.get(`/img/v1/i1/${imageId}/i.jpg`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching live matches:", error);
+    throw error;
+  }
+};
+
+/**
+ * ===================================================================
  *                      Fetch Upcoming Matches
  * ===================================================================
  */

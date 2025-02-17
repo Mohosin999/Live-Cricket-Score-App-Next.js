@@ -7,7 +7,7 @@ import Loading from "./ui/Loading";
  * A reusable component to display upcoming matches.
  *
  * @param {Object} props - The component props.
- * @param {Function} props.matches - An array of match data.
+ * @param {Function} props.matches - An object of match data.
  * @returns {JSX.Element} - The rendered component.
  */
 const UpcomingMatches = ({ matches }) => {
@@ -118,7 +118,7 @@ const UpcomingMatches = ({ matches }) => {
 
 // PropTypes validation
 UpcomingMatches.propTypes = {
-  matches: PropTypes.array.isRequired,
+  matches: PropTypes.object.isRequired,
 };
 
 export default UpcomingMatches;
