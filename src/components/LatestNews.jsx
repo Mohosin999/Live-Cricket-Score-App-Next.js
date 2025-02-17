@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 import Loading from "./ui/Loading";
 import Image from "next/image";
-import CricketImg from "../../public/cricket.jpg";
+import Img01 from "../../public/crick-img/01.jpg";
+import Img02 from "../../public/crick-img/02.jpg";
+import Img03 from "../../public/crick-img/03.jpg";
+import Img04 from "../../public/crick-img/04.jpg";
 
 /**
  * Convert timestamp to relative time (e.g., "2 hours ago").
@@ -39,8 +42,11 @@ const getRelativeTime = (timestamp) => {
  * @param {Object} props.newsObj - An object containing match news.
  * @returns {JSX.Element} - The rendered component.
  */
-const LatestNews = async ({ newsObj }) => {
+const LatestNews = ({ newsObj }) => {
   if (!newsObj) return <Loading text="Loading upcoming women matches..." />;
+
+  // Image array for first 4 news items
+  const images = [Img01, Img02, Img03, Img04];
 
   return (
     <div>
@@ -48,13 +54,14 @@ const LatestNews = async ({ newsObj }) => {
         <div>
           {newsObj?.storyList
             ?.filter((filteredNews) => filteredNews?.story)
+            .slice(0, 4) // Fetch only first 4 news items
             .map((newsList, index) => {
               const { seoHeadline, intro, pubTime } = newsList.story;
               return (
                 <div key={index} className="pb-6">
                   {/* Image */}
                   <Image
-                    src={CricketImg}
+                    src={images[index]} // Assign different images for each news item
                     alt="Cricket News"
                     width={0}
                     height={0}
@@ -62,7 +69,9 @@ const LatestNews = async ({ newsObj }) => {
                     className="w-full h-auto"
                   />
                   {/* Series Name */}
-                  <h3 className="text-base font-bold mt-2">{seoHeadline}</h3>
+                  <h3 className="text-gray-700 text-base font-bold mt-2">
+                    {seoHeadline}
+                  </h3>
                   <p className="text-sm mt-1">{intro}</p>
                   {/* Time Ago */}
                   {pubTime && (

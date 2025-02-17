@@ -15,20 +15,20 @@ const Home = async () => {
 
   return (
     <Wrapper>
-      <div className="py-4 grid grid-cols-4 gap-10">
+      <div className="grid grid-cols-6 gap-10">
         {/* Live Matches Section */}
-        <div className="col-span-1">
-          <h2 className="text-lg font-semibold mb-2 text-green-700">
+        <div className="col-span-2">
+          <h2 className="text-base text-center font-semibold mb-2 text-green-600">
             Live Matches
           </h2>
           <div className="space-y-4">
-            <MatchOverview matches={liveMatches} />
+            <MatchOverview matches={liveMatches} colSpan1={true} />
           </div>
         </div>
 
         {/* Latest News Section */}
-        <div className="col-span-2">
-          <h2 className="text-lg font-semibold text-center text-green-700">
+        <div className="col-span-3">
+          <h2 className="text-base font-semibold text-center text-green-600">
             Latest Cricket News
           </h2>
           <div className="py-4">
@@ -37,7 +37,7 @@ const Home = async () => {
         </div>
 
         <div className="col-span-1">
-          <h2 className="text-lg font-semibold mb-2 text-green-700">
+          <h2 className="text-base text-center font-semibold mb-2 text-green-600">
             Series Update
           </h2>
           <div className="space-y-4">
