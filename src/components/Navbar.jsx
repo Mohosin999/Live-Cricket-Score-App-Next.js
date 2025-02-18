@@ -39,13 +39,13 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              href="/live-matches"
+              href="/live-matches/international"
               className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
             >
               Live Matches
             </Link>
             <Link
-              href="/recent-matches"
+              href="/recent-matches/international"
               className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
             >
               Recent Matches
@@ -101,14 +101,14 @@ const Navbar = () => {
                 Home
               </Link>
               <Link
-                href="/live-matches"
+                href="/live-matches/international"
                 className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
                 onClick={toggleMobileMenu}
               >
                 Live Matches
               </Link>
               <Link
-                href="/recent-matches"
+                href="/recent-matches/international"
                 className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
                 onClick={toggleMobileMenu}
               >
