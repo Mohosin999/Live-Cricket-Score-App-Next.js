@@ -8,7 +8,9 @@ const RecentMatches = async () => {
 
   return (
     <Wrapper>
-      <MatchOverview matches={recentMatches} />
+      <div className="pt-6">
+        <MatchOverview matches={recentMatches} />
+      </div>
     </Wrapper>
   );
 };
