@@ -39,7 +39,7 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              href="/live-matches/international"
+              href="/live-matches"
               className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
             >
               Live Matches
@@ -101,7 +101,7 @@ const Navbar = () => {
                 Home
               </Link>
               <Link
-                href="/live-matches/international"
+                href="/live-matches"
                 className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
                 onClick={toggleMobileMenu}
               >

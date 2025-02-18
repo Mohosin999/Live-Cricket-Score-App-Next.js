@@ -5,7 +5,6 @@ import { getMatchesScorecard } from "@/lib/cricketApi";
 const RecentMatchId = async ({ params }) => {
   const { matchId } = await params;
   const matchesScorecard = await getMatchesScorecard(matchId);
-  console.log(matchesScorecard);
 
   return (
     <Wrapper>

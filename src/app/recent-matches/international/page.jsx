@@ -9,7 +9,11 @@ const RecentMatches = async () => {
   return (
     <Wrapper>
       <div className="pt-6">
-        <MatchOverview matches={recentMatches} />
+        <MatchOverview
+          matches={recentMatches}
+          path={"/recent-matches/international"}
+          filterType="recent"
+        />
       </div>
     </Wrapper>
   );

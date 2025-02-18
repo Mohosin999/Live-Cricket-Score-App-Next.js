@@ -9,7 +9,11 @@ const LiveMatches = async () => {
 
   return (
     <Wrapper>
-      <MatchOverview matches={liveMatches} />
+      <MatchOverview
+        matches={liveMatches}
+        path={"/live-matches"}
+        ffilterType="live"
+      />
     </Wrapper>
   );
 };

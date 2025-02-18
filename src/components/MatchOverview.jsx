@@ -4,17 +4,17 @@ import { motion, useInView } from "framer-motion";
 import { useRouter } from "next/navigation"; // Import useRouter
 import Loading from "./ui/Loading";
 
-const MatchOverview = ({ matches, colSpan1 = false }) => {
+const MatchOverview = ({ matches, path, colSpan1 = false }) => {
   const router = useRouter();
 
-  /**
+  /**S
    * Handles the click event for a match.
    * Navigates to the scoreboard page for the selected match.
    *
    * @param {string} matchId - The unique ID of the match.
    */
   const handleMatchClick = (matchId) => {
-    router.push(`/recent-matches/${matchId}`);
+    router.push(`${path}/${matchId}`);
   };
 
   if (!matches) return <Loading text="Loading upcoming women matches..." />;
