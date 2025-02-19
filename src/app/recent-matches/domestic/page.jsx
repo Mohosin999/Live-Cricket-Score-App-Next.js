@@ -12,6 +12,8 @@ const DomesticRecentMatches = async () => {
     (matches) => matches.matchType === "Domestic"
   );
 
+  console.log("console from recent domestic -> ", recentMatches);
+
   return (
     <Wrapper>
       <div className="pt-6">
