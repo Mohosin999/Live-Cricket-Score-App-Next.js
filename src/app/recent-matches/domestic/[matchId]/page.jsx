@@ -2,7 +2,7 @@ import ScoreCard from "@/components/ScoreCard";
 import Wrapper from "@/components/Wrapper";
 import { getMatchesScorecard } from "@/lib/cricketApi";
 
-const RecentMatchId = async ({ params }) => {
+const DomesticRecentMatchId = async ({ params }) => {
   const { matchId } = await params;
   const matchesScorecard = await getMatchesScorecard(matchId);
 
@@ -15,4 +15,4 @@ const RecentMatchId = async ({ params }) => {
   );
 };
 
-export default RecentMatchId;
+export default DomesticRecentMatchId;

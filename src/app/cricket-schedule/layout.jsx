@@ -2,7 +2,7 @@
 import NavLink from "@/components/ui/NavLink";
 import { usePathname } from "next/navigation";
 
-export default function Layout({ children }) {
+export default function ScheduleLayout({ children }) {
   const pathname = usePathname(); // Get the current path
 
   // Function to check if a link is active
@@ -29,6 +29,12 @@ export default function Layout({ children }) {
           href="/cricket-schedule/women"
           label="Women"
           isActive={isActive("/cricket-schedule/women")}
+        />
+
+        <NavLink
+          href="/cricket-schedule/league"
+          label="League"
+          isActive={isActive("/cricket-schedule/league")}
         />
       </div>
 
