@@ -20,7 +20,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-gray-900 dark:bg-gray-800 shadow-sm transition-colors">
+    // <nav className="fixed top-0 left-0 w-full z-50 bg-gray-900 dark:bg-gray-800 shadow-sm transition-colors">
+    <nav className="bg-gray-900 dark:bg-gray-800 shadow-sm transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}

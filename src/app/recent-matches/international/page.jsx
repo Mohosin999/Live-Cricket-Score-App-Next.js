@@ -5,20 +5,21 @@ import { getRecentMatches } from "@/lib/cricketApi";
 
 const InternationalRecentMatches = async () => {
   // Get all recent matches
-  const recentMatches = await getRecentMatches();
+  // const recentMatches = await getRecentMatches();
 
   // Filter matches related to international
-  const filteredRecent = recentMatches.typeMatches.filter(
-    (matches) => matches.matchType === "International"
-  );
+  // const filteredRecent = recentMatches.typeMatches.filter(
+  //   (matches) => matches.matchType === "International"
+  // );
 
   return (
     <Wrapper>
       <div className="pt-6">
-        <MatchOverview
+        {/* <MatchOverview
           matches={filteredRecent}
           path={"/recent-matches/international"}
-        />
+        /> */}
+        recent - international
       </div>
     </Wrapper>
   );
