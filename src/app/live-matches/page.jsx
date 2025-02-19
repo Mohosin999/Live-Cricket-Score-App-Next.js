@@ -5,7 +5,7 @@ import { getLiveMatches } from "@/lib/cricketApi";
 
 const LiveMatches = async () => {
   const liveMatches = await getLiveMatches();
-  console.log("Log from live page -> ", liveMatches);
+  // console.log("Log from live page -> ", liveMatches);
 
   return (
     <Wrapper>
