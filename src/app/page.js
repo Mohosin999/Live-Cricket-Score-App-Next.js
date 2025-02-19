@@ -9,9 +9,9 @@ import LatestNews from "@/components/LatestNews";
 import MatchOverview from "@/components/MatchOverview";
 
 const Home = async () => {
-  // const liveMatches = await getLiveMatches();
-  // const series = await getSeries();
-  // const internationNews = await getInternationalNews();
+  const liveMatches = await getLiveMatches();
+  const series = await getSeries();
+  const internationNews = await getInternationalNews();
 
   return (
     <Wrapper>
@@ -19,21 +19,21 @@ const Home = async () => {
         {/* Live Matches Section */}
         <div className="col-span-2">
           <div className="space-y-4 h-screen overflow-y-auto no-scrollbar">
-            {/* <MatchOverview matches={liveMatches} colSpan1={true} /> */}
+            <MatchOverview matches={liveMatches} colSpan1={true} />
           </div>
         </div>
 
         {/* Latest News Section */}
         <div className="col-span-3">
           <div className="py-4 h-screen overflow-y-auto no-scrollbar">
-            {/* <LatestNews newsObj={internationNews} /> */}
+            <LatestNews newsObj={internationNews} />
           </div>
         </div>
 
         {/* Series and Upcoming series */}
         <div className="col-span-1">
           <div className="space-y-4 h-screen overflow-y-auto no-scrollbar">
-            {/* <UpcomingSeries series={series} /> */}
+            <UpcomingSeries series={series} />
           </div>
         </div>
       </div>
