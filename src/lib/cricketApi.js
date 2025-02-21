@@ -136,8 +136,7 @@
 import axios from "axios";
 import NodeCache from "node-cache";
 
-const cache = new NodeCache({ stdTTL: 300 }); // Cache expires in 5 minutes (increase from 1 min)
-const RETRY_DELAY = 2000; // 2-second delay between retries
+const cache = new NodeCache({ stdTTL: 300 });
 
 const cricketApi = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
@@ -149,40 +148,26 @@ const cricketApi = axios.create({
 
 /**
  * ===================================================================
- *                  Helper function to fetch with cache & retries
+ *                  Helper function to fetch with cache
  * ===================================================================
  */
 const fetchWithCache = async (key, url) => {
   const cachedData = cache.get(key);
   if (cachedData) return cachedData; // Return cached data if available
 
-  let attempts = 0;
-  while (attempts < 3) {
-    // Retry up to 3 times if 429 occurs
-    try {
-      const response = await cricketApi.get(url);
-      cache.set(key, response.data); // Store in cache
-      return response.data;
-    } catch (error) {
-      if (error.response?.status === 429) {
-        console.warn(
-          `Rate limit exceeded. Retrying in ${RETRY_DELAY / 1000} seconds...`
-        );
-        await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
-        attempts++;
-      } else {
-        console.error(`Error fetching data from ${url}:`, error);
-        throw error;
-      }
-    }
+  try {
+    const response = await cricketApi.get(url);
+    cache.set(key, response.data); // Store in cache
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching data from ${url}:`, error);
+    throw error;
   }
-
-  throw new Error("Max retries reached. Unable to fetch data.");
 };
 
 /**
  * ===================================================================
- *                      Fetch Live Matches
+ *                      Fetch Live matches
  * ===================================================================
  */
 export const getLiveMatches = () =>

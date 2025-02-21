@@ -13,6 +13,8 @@ const Home = async () => {
   const series = await getSeries();
   const internationNews = await getInternationalNews();
 
+  console.log("live match from home page -> ", liveMatches);
+
   return (
     <Wrapper>
       <div className="grid grid-cols-6 gap-10 pt-6">
