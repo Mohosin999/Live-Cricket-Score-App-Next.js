@@ -290,7 +290,7 @@ const MatchOverview = ({ matches, path, colSpan1 = false }) => {
           )}
         </div>
       ) : (
-        <p className="text-center text-red-500">No recent matches available.</p>
+        <p className="text-center text-red-500">No matches available.</p>
       )}
     </div>
   );
