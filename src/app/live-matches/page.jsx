@@ -5,12 +5,12 @@ import { getLiveMatches } from "@/lib/cricketApi";
 
 const LiveMatches = async () => {
   const liveMatches = await getLiveMatches();
-  // console.log("Log from live page -> ", liveMatches);
+  const filteredLiveMatches = liveMatches?.typeMatches;
 
   return (
     <Wrapper>
       <MatchOverview
-        matches={liveMatches}
+        matches={filteredLiveMatches}
         path={"/live-matches"}
         ffilterType="live"
       />
