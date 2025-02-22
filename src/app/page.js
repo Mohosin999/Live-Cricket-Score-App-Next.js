@@ -27,7 +27,7 @@ const Home = async () => {
 
         {/* Series and Upcoming series */}
         <div className="col-span-3">
-          <div className="space-y-4  h-screen overflow-y-auto">
+          <div className="space-y-4">
             <CricketArticles />
           </div>
         </div>
