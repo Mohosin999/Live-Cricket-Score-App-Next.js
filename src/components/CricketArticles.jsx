@@ -71,10 +71,7 @@ const CricketArticles = () => {
   return (
     <div className="grid grid-cols-1 gap-6">
       {articles.map((article) => (
-        <div
-          key={article.id}
-          className="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden"
-        >
+        <div key={article.id} className="card overflow-hidden">
           <div className="relative h-48 hover:scale-105 transition-transform duration-300">
             <Image
               src={article.image}
@@ -86,12 +83,10 @@ const CricketArticles = () => {
           </div>
           <div className="p-6">
             {/* Title */}
-            <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">
-              {article.title}
-            </h2>
+            <h2 className="text-xl font-bold mb-4 heading">{article.title}</h2>
 
             {/* Content */}
-            <div className="space-y-4 text-[15px] text-gray-700 dark:text-gray-300">
+            <div className="space-y-4 text-[15px] params">
               {article.content.slice(0, 1).map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
@@ -106,7 +101,7 @@ const CricketArticles = () => {
                 onClick={() => toggleShowMore(article.id)}
                 className="text-blue-500 hover:text-red-500 font-semibold cursor-pointer"
               >
-                {showMore[article.id] ? "see less" : "see more..."}
+                {showMore[article.id] ? "See less" : "See more..."}
               </button>
             </div>
           </div>

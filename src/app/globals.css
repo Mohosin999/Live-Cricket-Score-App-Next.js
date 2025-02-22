@@ -19,3 +19,24 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Tailwind css reusable styles */
+@layer components {
+  .heading {
+    @apply text-gray-900 dark:text-gray-200;
+  }
+  .sub-heading {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+  .params {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-sm;
+  }
+
+  .teams-score {
+    @apply params w-full flex items-center justify-between text-sm;
+  }
+}

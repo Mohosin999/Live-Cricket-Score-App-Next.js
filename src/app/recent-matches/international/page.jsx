@@ -1,8 +1,8 @@
 import React from "react";
 import Wrapper from "@/components/Wrapper";
 import { getRecentMatches } from "@/lib/cricketApi";
-import RecentMatches from "@/components/RecentMatches";
-import CricketArticles from "@/components/CricketArticles";
+import MatchesList from "@/components/MatchesList";
+// import RecentMatches from "@/components/RecentMatches";
 
 const InternationalRecentMatches = async () => {
   // Get all recent matches
@@ -15,23 +15,13 @@ const InternationalRecentMatches = async () => {
 
   return (
     <Wrapper>
-      <div className="grid grid-cols-2 gap-6">
-        <div className="space-y-4">
-          <RecentMatches matches={filteredRecent} />
-        </div>
-        {/* Live Matches Section */}
-        {/* <div className="col-span-1">
-          <div className="space-y-4">
-            <CricketArticles />
-          </div>
-        </div> */}
-
-        {/* Series and Upcoming series */}
-        {/* <div className="col-span-2">
-          <div className="space-y-4">
-            <RecentMatches matches={filteredRecent} />
-          </div>
-        </div> */}
+      <div className="space-y-4">
+        {/* <RecentMatches matches={filteredRecent} /> */}
+        <MatchesList
+          matches={filteredRecent}
+          routePath="/recent-matches/international"
+          loadingText="Loading recent matches"
+        />
       </div>
     </Wrapper>
   );

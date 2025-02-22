@@ -2,17 +2,15 @@ import React from "react";
 
 const NoMatchesAvailable = ({ title }) => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[200px] bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm">
+    <div className="flex flex-col items-center justify-center min-h-[200px] card p-6">
       {/* Emoji Animation */}
       <div className="text-6xl animate-bounce">😔</div>
 
       {/* Text */}
-      <p className="mt-4 text-center text-gray-700 dark:text-gray-200 text-lg font-medium">
-        {title}
-      </p>
+      <h3 className="mt-4 text-center heading text-lg font-medium">{title}</h3>
 
       {/* Subtext */}
-      <p className="mt-2 text-center text-gray-500 dark:text-gray-400 text-sm">
+      <p className="mt-2 text-center sub-heading text-sm">
         Check back later for updates!
       </p>
     </div>
