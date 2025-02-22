@@ -3,8 +3,10 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useRouter } from "next/navigation"; // Import useRouter
 import Loading from "./ui/Loading";
+import LiveMatches from "./../app/live-matches/page";
+import NoMatchesAvailable from "./NoMatchesAvailable";
 
-const MatchOverview = ({ matches, path, colSpan1 = false }) => {
+const LiveMatches = ({ matches }) => {
   const router = useRouter();
 
   /**S
@@ -14,10 +16,10 @@ const MatchOverview = ({ matches, path, colSpan1 = false }) => {
    * @param {string} matchId - The unique ID of the match.
    */
   const handleMatchClick = (matchId) => {
-    router.push(`${path}/${matchId}`);
+    router.push(`/live-matches/${matchId}`);
   };
 
-  if (!matches) return <Loading text="Loading upcoming women matches..." />;
+  if (!matches) return <Loading text="Loading live matches..." />;
 
   return (
     <div>
@@ -140,10 +142,10 @@ const MatchOverview = ({ matches, path, colSpan1 = false }) => {
           )}
         </div>
       ) : (
-        <p className="text-center text-red-500">No matches available.</p>
+        <NoMatchesAvailable title="No live matches available at this moment!" />
       )}
     </div>
   );
 };
 
-export default MatchOverview;
+export default LiveMatches;
