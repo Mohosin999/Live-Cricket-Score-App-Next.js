@@ -39,23 +39,12 @@ const Navbar = () => {
             >
               Home
             </Link>
-            <Link
-              href="/live-matches"
-              className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Live Matches
-            </Link>
+
             <Link
               href="/recent-matches/international"
               className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
             >
               Recent Matches
-            </Link>
-            <Link
-              href="/cricket-schedule/international"
-              className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Schedule
             </Link>
           </div>
 
@@ -101,26 +90,13 @@ const Navbar = () => {
               >
                 Home
               </Link>
-              <Link
-                href="/live-matches"
-                className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-                onClick={toggleMobileMenu}
-              >
-                Live Matches
-              </Link>
+
               <Link
                 href="/recent-matches/international"
                 className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
                 onClick={toggleMobileMenu}
               >
                 Recent Matches
-              </Link>
-              <Link
-                href="/cricket-schedule/international"
-                className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-                onClick={toggleMobileMenu}
-              >
-                Schedule
               </Link>
             </div>
           </div>
