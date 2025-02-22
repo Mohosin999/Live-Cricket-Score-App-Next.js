@@ -46,6 +46,13 @@ const Navbar = () => {
             >
               Recent Matches
             </Link>
+
+            <Link
+              href="/cricket-schedule/international"
+              className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Schedule
+            </Link>
           </div>
 
           {/* Dark Mode Toggle */}
@@ -97,6 +104,14 @@ const Navbar = () => {
                 onClick={toggleMobileMenu}
               >
                 Recent Matches
+              </Link>
+
+              <Link
+                href="/cricket-schedule/international"
+                className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                onClick={toggleMobileMenu}
+              >
+                Schedule
               </Link>
             </div>
           </div>

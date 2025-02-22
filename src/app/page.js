@@ -3,20 +3,15 @@ import {
   getLiveMatches,
   getUpcomingInterantionalMatches,
 } from "@/lib/cricketApi";
-import MatchOverview from "@/components/MatchOverview";
-import UpcomingMatches from "@/components/UpcomingMatches";
+import LiveMatchesComp from "@/components/LiveMatchesComp";
+import CricketArticles from "@/components/CricketArticles";
+import NoMatchesAvailable from "@/components/NoMatchesAvailable";
 
 const Home = async () => {
-  const liveMatches = await getLiveMatches();
-  const upcomingMatches = await getUpcomingInterantionalMatches();
+  // const liveMatches = await getLiveMatches();
 
   // Get live match array from live matches object
-  const liveMatchesArr = liveMatches?.typeMatches;
-
-  // Filter upcoming matches from upcoming matches object
-  const filteredIUpcomingMatches = upcomingMatches?.matchScheduleMap?.filter(
-    (day) => day.scheduleAdWrapper
-  );
+  // const liveMatchesArr = liveMatches?.typeMatches;
 
   return (
     <Wrapper>
@@ -24,14 +19,16 @@ const Home = async () => {
         {/* Live Matches Section */}
         <div className="col-span-2">
           <div className="space-y-4">
-            <MatchOverview matches={liveMatchesArr} colSpan1={true} />
+            {/* <LiveMatchesComp matches={liveMatchesArr} /> */}
           </div>
+
+          <NoMatchesAvailable title="No live matches available at this moment!" />
         </div>
 
         {/* Series and Upcoming series */}
         <div className="col-span-3">
-          <div className="space-y-4">
-            <UpcomingMatches matches={filteredIUpcomingMatches} />
+          <div className="space-y-4  h-screen overflow-y-auto">
+            <CricketArticles />
           </div>
         </div>
       </div>

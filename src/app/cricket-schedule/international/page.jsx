@@ -3,17 +3,16 @@ import Wrapper from "@/components/Wrapper";
 import { getUpcomingInterantionalMatches } from "@/lib/cricketApi";
 
 const International = async () => {
-  const internationalMatches = await getUpcomingInterantionalMatches();
+  const upcomingMatches = await getUpcomingInterantionalMatches();
 
   // Filter matches on the server
-  const filteredInternationalMatches =
-    internationalMatches?.matchScheduleMap?.filter(
-      (day) => day.scheduleAdWrapper
-    );
+  const filteredUpcomingMatches = upcomingMatches?.matchScheduleMap?.filter(
+    (day) => day.scheduleAdWrapper
+  );
 
   return (
     <Wrapper>
-      <UpcomingMatches matches={filteredInternationalMatches} />
+      <UpcomingMatches matches={filteredUpcomingMatches} />
     </Wrapper>
   );
 };
