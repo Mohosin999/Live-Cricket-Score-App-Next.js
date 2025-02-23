@@ -39,4 +39,15 @@ body {
   .teams-score {
     @apply params w-full flex items-center justify-between text-sm;
   }
+
+  .highlight-heading {
+    @apply bg-green-700 dark:bg-green-300 text-gray-200 dark:text-gray-800;
+  }
+  .highlight-sub-heading {
+    @apply bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm;
+  }
+
+  .custom-border {
+    @apply border-b border-gray-500 last:border-b-0;
+  }
 }

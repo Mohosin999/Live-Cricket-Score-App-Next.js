@@ -11,34 +11,41 @@ const ScoreCard = ({ matchScores }) => {
          * ============================================================
          */}
         <div className="flex items-center justify-between px-4 py-2 mb-4">
-          <div className="text-base font-semibold">
+          <div className="text-base font-semibold params">
             <p>
               {matchScores?.scoreCard?.[0]?.batTeamDetails?.batTeamShortName} -{" "}
               {matchScores?.scoreCard?.[0]?.scoreDetails?.runs} (
               {matchScores?.scoreCard?.[0]?.scoreDetails?.overs} Overs)
             </p>
-            <p>
-              {matchScores?.scoreCard?.[1]?.batTeamDetails?.batTeamShortName} -{" "}
-              {matchScores?.scoreCard?.[1]?.scoreDetails?.runs} (
-              {matchScores?.scoreCard?.[1]?.scoreDetails?.overs} Overs)
-            </p>
-            <p className="mt-4 text-sm font-normal text-green-600">
+            {/* This section will show when second innings will be available */}
+            {matchScores?.scoreCard?.[1]?.scoreDetails?.runs && (
+              <p>
+                {matchScores?.scoreCard?.[1]?.batTeamDetails?.batTeamShortName}{" "}
+                - {matchScores?.scoreCard?.[1]?.scoreDetails?.runs} (
+                {matchScores?.scoreCard?.[1]?.scoreDetails?.overs} Overs)
+              </p>
+            )}
+            {/* Match status` */}
+            <p className="mt-4 text-sm font-normal text-blue-500">
               {matchScores?.status}
             </p>
           </div>
+          {/* After completing the match, this will be visible */}
           {matchScores?.matchHeader?.state === "Complete" && (
             <div className="text-sm">
+              {/* Player of the match */}
               <div className="mb-2">
-                <p className="text-gray-500">Player of the Match</p>
-                <p>
+                <p className="sub-heading">Player of the Match</p>
+                <p className="params">
                   {matchScores?.matchHeader?.playersOfTheMatch?.[0]?.fullName}
                 </p>
               </div>
+              {/* Player of the series if available */}
               <div>
                 {matchScores?.matchHeader?.playersOfTheSeries?.[0] && (
                   <div>
-                    <p className="text-gray-500">Player of the Series</p>
-                    <p>
+                    <p className="sub-heading">Player of the Series</p>
+                    <p className="params">
                       {
                         matchScores?.matchHeader?.playersOfTheSeries?.[0]
                           ?.fullName
@@ -59,7 +66,7 @@ const ScoreCard = ({ matchScores }) => {
         {matchScores?.scoreCard?.map((matchScore, index) => (
           <div key={index}>
             {/* Innings Header - Proper Alignment */}
-            <div className="flex justify-between items-center px-4 py-2 bg-gray-700 text-white font-semibold">
+            <div className="flex justify-between items-center px-4 py-2 highlight-heading font-semibold">
               <span>{matchScore?.batTeamDetails?.batTeamName} Innings</span>
               <span>
                 {matchScore?.scoreDetails?.runs}-
@@ -70,8 +77,8 @@ const ScoreCard = ({ matchScores }) => {
 
             {/* Table for Batting Score */}
             <table className="w-full border-collapse">
-              <thead className="bg-gray-200 text-sm text-gray-700">
-                <tr className="border-b">
+              <thead className="highlight-sub-heading">
+                <tr>
                   <th className="py-2 px-4 text-left">Batter</th>
                   <th className="py-2 px-2 text-center">R</th>
                   <th className="py-2 px-2 text-center">B</th>
@@ -81,15 +88,15 @@ const ScoreCard = ({ matchScores }) => {
                 </tr>
               </thead>
 
-              <tbody className="text-sm text-gray-900">
+              <tbody className="text-sm heading">
                 {Object.values(
                   matchScore?.batTeamDetails?.batsmenData || {}
                 ).map((player, index) => (
-                  <tr key={index} className="border-b">
+                  <tr key={index} className="custom-border">
                     <td className="py-2 px-4 text-left">
                       <span className="font-semibold">{player.batName}</span>
                       <br />
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs sub-heading">
                         {player.outDesc}
                       </span>
                     </td>
@@ -135,7 +142,7 @@ const ScoreCard = ({ matchScores }) => {
 
             {/* Bowling Stats */}
             <table className="w-full border-collapse mt-4">
-              <thead className="bg-gray-200 text-sm text-gray-700">
+              <thead className="highlight-sub-heading">
                 <tr className="border-b">
                   <th className="py-2 px-4 text-left">Bowler</th>
                   <th className="py-2 px-2 text-center">O</th>
@@ -147,11 +154,11 @@ const ScoreCard = ({ matchScores }) => {
                   <th className="py-2 px-2 text-center">ECO</th>
                 </tr>
               </thead>
-              <tbody className="text-sm text-gray-900">
+              <tbody className="text-sm params">
                 {Object.values(
                   matchScore?.bowlTeamDetails?.bowlersData || {}
                 ).map((bowler, index) => (
-                  <tr key={index} className="border-b last:border-b-0">
+                  <tr key={index} className="custom-border">
                     <td className="py-2 px-4 text-left font-semibold">
                       {bowler.bowlName}
                     </td>
@@ -168,14 +175,14 @@ const ScoreCard = ({ matchScores }) => {
             </table>
 
             <table className="w-full border-collapse mt-4 mb-6">
-              <thead className="bg-gray-200 text-sm text-gray-700">
+              <thead className="highlight-sub-heading">
                 <tr className="border-b">
                   <th className="py-2 px-4 text-left">Powerplays</th>
                   <th className="py-2 px-2 text-center">Overs</th>
                   <th className="py-2 px-2 text-center">Runs</th>
                 </tr>
               </thead>
-              <tbody className="text-sm text-gray-900">
+              <tbody className="text-sm params">
                 <tr key={index}>
                   <td className="py-2 px-4 text-left font-semibold capitalize">
                     {matchScore?.ppData?.pp_1?.ppType}
