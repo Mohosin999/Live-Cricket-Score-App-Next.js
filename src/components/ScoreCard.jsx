@@ -143,7 +143,7 @@ const ScoreCard = ({ matchScores }) => {
             {/* Bowling Stats */}
             <table className="w-full border-collapse mt-4">
               <thead className="highlight-sub-heading">
-                <tr className="border-b">
+                <tr>
                   <th className="py-2 px-4 text-left">Bowler</th>
                   <th className="py-2 px-2 text-center">O</th>
                   <th className="py-2 px-2 text-center">M</th>
@@ -176,7 +176,7 @@ const ScoreCard = ({ matchScores }) => {
 
             <table className="w-full border-collapse mt-4 mb-6">
               <thead className="highlight-sub-heading">
-                <tr className="border-b">
+                <tr>
                   <th className="py-2 px-4 text-left">Powerplays</th>
                   <th className="py-2 px-2 text-center">Overs</th>
                   <th className="py-2 px-2 text-center">Runs</th>
