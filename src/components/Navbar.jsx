@@ -162,8 +162,13 @@ const Navbar = () => {
   return (
     <>
       {isLoading && (
+        // <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
+        //   <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+        // </div>
         <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+          <div className="animate-pulse text-yellow-400 text-4xl">
+            🏏LiveScore
+          </div>
         </div>
       )}
 
