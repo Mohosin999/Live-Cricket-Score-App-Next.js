@@ -1,5 +1,5 @@
-import ScoreCard from "@/components/ScoreCard";
 import Wrapper from "@/components/Wrapper";
+import ScoreCard from "@/components/ScoreCard";
 import { getMatchesScorecard } from "@/lib/cricketApi";
 
 const InternationalRecentMatchId = async ({ params }) => {

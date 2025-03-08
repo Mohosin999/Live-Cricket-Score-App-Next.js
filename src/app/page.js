@@ -43,6 +43,7 @@ import Wrapper from "@/components/Wrapper";
 import { getLiveMatches } from "@/lib/cricketApi";
 import CricketArticles from "@/components/CricketArticles";
 import MatchesList from "@/components/MatchesList";
+import GoToTopButton from "@/components/GoToTopButton";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -74,6 +75,8 @@ const Home = async () => {
           </div>
         </div>
       </div>
+
+      <GoToTopButton />
     </Wrapper>
   );
 };

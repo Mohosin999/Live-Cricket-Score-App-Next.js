@@ -1,5 +1,6 @@
 import React from "react";
 import Wrapper from "./Wrapper";
+import GoToTopButton from "./GoToTopButton";
 
 const ScoreCard = ({ matchScores }) => {
   return (
@@ -200,6 +201,8 @@ const ScoreCard = ({ matchScores }) => {
           </div>
         ))}
       </div>
+
+      <GoToTopButton />
     </Wrapper>
   );
 };

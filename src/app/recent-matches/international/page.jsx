@@ -2,6 +2,7 @@ import React from "react";
 import Wrapper from "@/components/Wrapper";
 import { getRecentMatches } from "@/lib/cricketApi";
 import MatchesList from "@/components/MatchesList";
+import GoToTopButton from "@/components/GoToTopButton";
 // import RecentMatches from "@/components/RecentMatches";
 
 const InternationalRecentMatches = async () => {
@@ -23,6 +24,8 @@ const InternationalRecentMatches = async () => {
           loadingText="Loading recent matches"
         />
       </div>
+
+      <GoToTopButton />
     </Wrapper>
   );
 };
