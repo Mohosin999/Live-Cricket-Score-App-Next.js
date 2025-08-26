@@ -3,6 +3,11 @@ import Wrapper from "./Wrapper";
 import GoToTopButton from "./GoToTopButton";
 
 const ScoreCard = ({ matchScores }) => {
+  console.log(
+    "matchScores",
+    matchScores,
+    matchScores?.scoreCard?.[0]?.batTeamDetails?.batTeamShortName
+  );
   return (
     <Wrapper>
       <div>
@@ -14,49 +19,23 @@ const ScoreCard = ({ matchScores }) => {
         <div className="flex items-center justify-between px-4 py-2 mb-4">
           <div className="text-base font-semibold params">
             <p>
-              {matchScores?.scoreCard?.[0]?.batTeamDetails?.batTeamShortName} -{" "}
-              {matchScores?.scoreCard?.[0]?.scoreDetails?.runs} (
-              {matchScores?.scoreCard?.[0]?.scoreDetails?.overs} Overs)
+              {matchScores?.scorecard?.[0]?.batteamsname} -{" "}
+              {matchScores?.scorecard?.[0]?.score} (
+              {matchScores?.scorecard?.[0]?.overs} Overs)
             </p>
             {/* This section will show when second innings will be available */}
-            {matchScores?.scoreCard?.[1]?.scoreDetails?.runs && (
+            {matchScores?.scorecard?.[1]?.score && (
               <p>
-                {matchScores?.scoreCard?.[1]?.batTeamDetails?.batTeamShortName}{" "}
-                - {matchScores?.scoreCard?.[1]?.scoreDetails?.runs} (
-                {matchScores?.scoreCard?.[1]?.scoreDetails?.overs} Overs)
+                {matchScores?.scorecard?.[1]?.batteamsname} -{" "}
+                {matchScores?.scorecard?.[1]?.score} (
+                {matchScores?.scorecard?.[1]?.overs} Overs)
               </p>
             )}
             {/* Match status` */}
-            <p className="mt-4 text-sm font-normal text-blue-500">
+            <p className="mt-2 lg:mt-4 text-sm font-normal text-blue-500">
               {matchScores?.status}
             </p>
           </div>
-          {/* After completing the match, this will be visible */}
-          {matchScores?.matchHeader?.state === "Complete" && (
-            <div className="text-sm">
-              {/* Player of the match */}
-              <div className="mb-2">
-                <p className="sub-heading">Player of the Match</p>
-                <p className="params">
-                  {matchScores?.matchHeader?.playersOfTheMatch?.[0]?.fullName}
-                </p>
-              </div>
-              {/* Player of the series if available */}
-              <div>
-                {matchScores?.matchHeader?.playersOfTheSeries?.[0] && (
-                  <div>
-                    <p className="sub-heading">Player of the Series</p>
-                    <p className="params">
-                      {
-                        matchScores?.matchHeader?.playersOfTheSeries?.[0]
-                          ?.fullName
-                      }
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
         </div>
 
         {/*
@@ -64,15 +43,14 @@ const ScoreCard = ({ matchScores }) => {
          *                      Match Scoreboard
          * ============================================================
          */}
-        {matchScores?.scoreCard?.map((matchScore, index) => (
+        {matchScores?.scorecard?.map((matchScore, index) => (
           <div key={index}>
             {/* Innings Header - Proper Alignment */}
             <div className="flex justify-between items-center px-4 py-2 highlight-heading font-semibold">
-              <span>{matchScore?.batTeamDetails?.batTeamName} Innings</span>
+              <span>{matchScore?.batteamname} Innings</span>
               <span>
-                {matchScore?.scoreDetails?.runs}-
-                {matchScore?.scoreDetails?.wickets} (
-                {matchScore?.scoreDetails?.overs} Overs)
+                {matchScore?.score}-{matchScore?.wickets} ({matchScore?.overs}{" "}
+                Overs)
               </span>
             </div>
 
@@ -90,26 +68,26 @@ const ScoreCard = ({ matchScores }) => {
               </thead>
 
               <tbody className="text-sm heading">
-                {Object.values(
-                  matchScore?.batTeamDetails?.batsmenData || {}
-                ).map((player, index) => (
-                  <tr key={index} className="custom-border">
-                    <td className="py-2 px-4 text-left">
-                      <span className="font-semibold">{player.batName}</span>
-                      <br />
-                      <span className="text-xs sub-heading">
-                        {player.outDesc}
-                      </span>
-                    </td>
-                    <td className="py-2 px-2 text-center">{player.runs}</td>
-                    <td className="py-2 px-2 text-center">{player.balls}</td>
-                    <td className="py-2 px-2 text-center">{player.fours}</td>
-                    <td className="py-2 px-2 text-center">{player.sixes}</td>
-                    <td className="py-2 px-2 text-center">
-                      {player.strikeRate}
-                    </td>
-                  </tr>
-                ))}
+                {Object.values(matchScore?.batsman || {}).map(
+                  (player, index) => (
+                    <tr key={index} className="custom-border">
+                      <td className="py-2 px-4 text-left">
+                        <span className="font-semibold">{player.name}</span>
+                        <br />
+                        <span className="text-xs sub-heading">
+                          {player.outdec}
+                        </span>
+                      </td>
+                      <td className="py-2 px-2 text-center">{player.runs}</td>
+                      <td className="py-2 px-2 text-center">{player.balls}</td>
+                      <td className="py-2 px-2 text-center">{player.fours}</td>
+                      <td className="py-2 px-2 text-center">{player.sixes}</td>
+                      <td className="py-2 px-2 text-center">
+                        {player.strkrate}
+                      </td>
+                    </tr>
+                  )
+                )}
               </tbody>
             </table>
 
@@ -119,24 +97,20 @@ const ScoreCard = ({ matchScores }) => {
                 Extras -{" "}
                 <span>
                   <span className="font-semibold">
-                    {matchScore?.extrasData?.total}
+                    {matchScore?.extras?.total}
                   </span>{" "}
-                  (b {matchScore?.extrasData?.byes}, lb{" "}
-                  {matchScore?.extrasData?.legByes}, w{" "}
-                  {matchScore?.extrasData?.wides}, nb{" "}
-                  {matchScore?.extrasData?.noBalls}, p{" "}
-                  {matchScore?.extrasData?.penalty})
+                  (b {matchScore?.extras?.byes}, lb{" "}
+                  {matchScore?.extras?.legbyes}, w {matchScore?.extras?.wides},
+                  nb {matchScore?.extras?.noballs}, p{" "}
+                  {matchScore?.extras?.penalty})
                 </span>
               </p>
 
               <p>
                 Total -{" "}
                 <span className="font-normal">
-                  <span className="font-semibold">
-                    {matchScore?.scoreDetails?.runs}
-                  </span>{" "}
-                  ({matchScore?.scoreDetails?.wickets} wkts,{" "}
-                  {matchScore?.scoreDetails?.overs} Overs)
+                  <span className="font-semibold">{matchScore?.score}</span> (
+                  {matchScore?.wickets} wkts, {matchScore?.overs} Overs)
                 </span>
               </p>
             </div>
@@ -150,28 +124,34 @@ const ScoreCard = ({ matchScores }) => {
                   <th className="py-2 px-2 text-center">M</th>
                   <th className="py-2 px-2 text-center">R</th>
                   <th className="py-2 px-2 text-center">W</th>
-                  <th className="py-2 px-2 text-center">NB</th>
-                  <th className="py-2 px-2 text-center">WD</th>
+                  {/* <th className="py-2 px-2 text-center">NB</th>
+                  <th className="py-2 px-2 text-center">WD</th> */}
                   <th className="py-2 px-2 text-center">ECO</th>
                 </tr>
               </thead>
               <tbody className="text-sm params">
-                {Object.values(
-                  matchScore?.bowlTeamDetails?.bowlersData || {}
-                ).map((bowler, index) => (
-                  <tr key={index} className="custom-border">
-                    <td className="py-2 px-4 text-left font-semibold">
-                      {bowler.bowlName}
-                    </td>
-                    <td className="py-2 px-2 text-center">{bowler.overs}</td>
-                    <td className="py-2 px-2 text-center">{bowler.maidens}</td>
-                    <td className="py-2 px-2 text-center">{bowler.runs}</td>
-                    <td className="py-2 px-2 text-center">{bowler.wickets}</td>
-                    <td className="py-2 px-2 text-center">{bowler.no_balls}</td>
-                    <td className="py-2 px-2 text-center">{bowler.wides}</td>
-                    <td className="py-2 px-2 text-center">{bowler.economy}</td>
-                  </tr>
-                ))}
+                {Object.values(matchScore?.bowler || {}).map(
+                  (bowler, index) => (
+                    <tr key={index} className="custom-border">
+                      <td className="py-2 px-4 text-left font-semibold">
+                        {bowler.name}
+                      </td>
+                      <td className="py-2 px-2 text-center">{bowler.overs}</td>
+                      <td className="py-2 px-2 text-center">
+                        {bowler.maidens}
+                      </td>
+                      <td className="py-2 px-2 text-center">{bowler.runs}</td>
+                      <td className="py-2 px-2 text-center">
+                        {bowler.wickets}
+                      </td>
+                      {/* <td className="py-2 px-2 text-center">{bowler.no_balls}</td>
+                    <td className="py-2 px-2 text-center">{bowler.wides}</td> */}
+                      <td className="py-2 px-2 text-center">
+                        {bowler.economy}
+                      </td>
+                    </tr>
+                  )
+                )}
               </tbody>
             </table>
 
@@ -186,14 +166,14 @@ const ScoreCard = ({ matchScores }) => {
               <tbody className="text-sm params">
                 <tr key={index}>
                   <td className="py-2 px-4 text-left font-semibold capitalize">
-                    {matchScore?.ppData?.pp_1?.ppType}
+                    {matchScore?.pp?.powerplay[0]?.pptype}
                   </td>
                   <td className="py-2 px-2 text-center">
-                    {matchScore?.ppData?.pp_1?.ppOversFrom}-
-                    {matchScore?.ppData?.pp_1?.ppOversTo}
+                    {matchScore?.pp?.powerplay[0]?.ovrfrom}-
+                    {matchScore?.pp?.powerplay[0]?.ovrto}
                   </td>
                   <td className="py-2 px-2 text-center">
-                    {matchScore?.ppData?.pp_1?.runsScored}
+                    {matchScore?.pp?.powerplay[0]?.run}
                   </td>
                 </tr>
               </tbody>
