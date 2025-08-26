@@ -1,13 +1,8 @@
 import React from "react";
-import Wrapper from "./Wrapper";
 import GoToTopButton from "./GoToTopButton";
+import Wrapper from "./Wrapper";
 
 const ScoreCard = ({ matchScores }) => {
-  console.log(
-    "matchScores",
-    matchScores,
-    matchScores?.scoreCard?.[0]?.batTeamDetails?.batTeamShortName
-  );
   return (
     <Wrapper>
       <div>
@@ -16,7 +11,7 @@ const ScoreCard = ({ matchScores }) => {
          *                     Basic Match Summary
          * ============================================================
          */}
-        <div className="flex items-center justify-between px-4 py-2 mb-4">
+        <div className="flex items-center justify-center px-4 py-2 mb-4">
           <div className="text-base font-semibold params">
             <p>
               {matchScores?.scorecard?.[0]?.batteamsname} -{" "}

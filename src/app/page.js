@@ -14,7 +14,7 @@ const Home = async () => {
 
   return (
     <Wrapper>
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-5 lg:gap-5 xl:gap-6">
         {/* Live Matches Section */}
         <div className="md:col-span-2">
           <div className="space-y-4">

@@ -1,185 +1,40 @@
-// "use client";
-
-// import button from "next/button";
-// import { useState, useEffect } from "react";
-// import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa"; // Import dark mode icons
-// import { useTheme } from "next-themes";
-
-// const Navbar = () => {
-//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-//   const { theme, setTheme } = useTheme();
-//   const [mounted, setMounted] = useState(false);
-
-//   // Ensure theme is mounted correctly
-//   useEffect(() => {
-//     setMounted(true);
-//   }, []);
-
-//   const toggleMobileMenu = () => {
-//     setIsMobileMenuOpen(!isMobileMenuOpen);
-//   };
-
-//   return (
-//     // <nav className="fixed top-0 left-0 w-full z-50 bg-gray-900 dark:bg-gray-800 shadow-sm transition-colors">
-//     <nav className="bg-gray-900 dark:bg-gray-800 shadow-sm transition-colors">
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="flex justify-between h-16">
-//           {/* Logo */}
-//           <div className="flex items-center">
-//             <button href="/" className="text-yellow-400 text-2xl font-bold">
-//               🏏LiveScore
-//             </button>
-//           </div>
-
-//           {/* Desktop Menu */}
-//           <div className="hidden md:flex items-center space-x-4">
-//             <button
-//               href="/"
-//               className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-//             >
-//               Home
-//             </button>
-
-//             <button
-//               href="/recent-matches/international"
-//               className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-//             >
-//               Recent Matches
-//             </button>
-
-//             <button
-//               href="/cricket-schedule/international"
-//               className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-//             >
-//               Schedule
-//             </button>
-//           </div>
-
-//           {/* Dark Mode Toggle */}
-//           <div className="flex items-center">
-//             {mounted && (
-//               <button
-//                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-//                 className="text-white dark:text-yellow-400 focus:outline-none mr-4"
-//               >
-//                 {theme === "dark" ? (
-//                   <FaSun className="w-6 h-6" />
-//                 ) : (
-//                   <FaMoon className="w-6 h-6" />
-//                 )}
-//               </button>
-//             )}
-//           </div>
-
-//           {/* Mobile Menu Toggle */}
-//           <div className="flex items-center md:hidden">
-//             <button
-//               onClick={toggleMobileMenu}
-//               className="text-white focus:outline-none"
-//             >
-//               {isMobileMenuOpen ? (
-//                 <FaTimes className="w-6 h-6" />
-//               ) : (
-//                 <FaBars className="w-6 h-6" />
-//               )}
-//             </button>
-//           </div>
-//         </div>
-
-//         {/* Mobile Menu */}
-//         {isMobileMenuOpen && (
-//           <div className="md:hidden">
-//             <div className="flex flex-col space-y-2 pb-4">
-//               <button
-//                 href="/"
-//                 className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-//                 onClick={toggleMobileMenu}
-//               >
-//                 Home
-//               </button>
-
-//               <button
-//                 href="/recent-matches/international"
-//                 className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-//                 onClick={toggleMobileMenu}
-//               >
-//                 Recent Matches
-//               </button>
-
-//               <button
-//                 href="/cricket-schedule/international"
-//                 className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-//                 onClick={toggleMobileMenu}
-//               >
-//                 Schedule
-//               </button>
-//             </div>
-//           </div>
-//         )}
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
-
 "use client";
 
 import { useState, useEffect } from "react";
-import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa"; // Import dark mode icons
+import { IoIosSunny, IoIosMoon } from "react-icons/io";
+import { HiMiniBars3 } from "react-icons/hi2";
+import { LiaTimesCircle } from "react-icons/lia";
 import { useTheme } from "next-themes";
-import { usePathname, useRouter } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
-  const pathname = usePathname();
 
-  // Ensure theme is mounted correctly
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Handle navigation function
   const handleNavigation = (path) => {
-    setIsLoading(true); // Show loading spinner
-    router.push(path); // Navigate to the new route
+    router.push(path);
   };
 
-  // Reset loading state when route changes
-  useEffect(() => {
-    setIsLoading(false);
-  }, [pathname]);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
 
   return (
     <>
-      {isLoading && (
-        // <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
-        //   <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
-        // </div>
-        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="animate-pulse text-yellow-400 text-4xl">
-            🏏LiveScore
-          </div>
-        </div>
-      )}
-
-      <nav className="bg-gray-900 dark:bg-gray-800 shadow-sm transition-colors">
+      <nav className="bg-gray-900 dark:bg-gray-800 shadow-sm transition-colors relative z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
+          <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
               <button
                 onClick={() => handleNavigation("/")}
-                className="text-yellow-400 text-2xl font-bold"
+                className="text-yellow-400 text-2xl font-bold active:scale-105"
               >
                 🏏LiveScore
               </button>
@@ -189,7 +44,7 @@ const Navbar = () => {
             <div className="hidden md:flex items-center space-x-4">
               <button
                 onClick={() => handleNavigation("/")}
-                className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium active:scale-105"
               >
                 Home
               </button>
@@ -198,7 +53,7 @@ const Navbar = () => {
                 onClick={() =>
                   handleNavigation("/recent-matches/international")
                 }
-                className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium active:scale-105"
               >
                 Recent Matches
               </button>
@@ -207,53 +62,98 @@ const Navbar = () => {
                 onClick={() =>
                   handleNavigation("/cricket-schedule/international")
                 }
-                className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium active:scale-105"
               >
                 Schedule
               </button>
             </div>
 
-            {/* Dark Mode Toggle */}
-            <div className="flex items-center">
+            {/* Desktop Theme Toggle (right side) */}
+            <div className="hidden md:flex items-center">
               {mounted && (
                 <button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="text-white dark:text-yellow-400 focus:outline-none mr-4"
+                  className="text-white dark:text-yellow-400 focus:outline-none active:scale-105"
+                  aria-label="Toggle theme"
                 >
                   {theme === "dark" ? (
-                    <FaSun className="w-6 h-6" />
+                    <IoIosSunny className="w-6 h-6" />
                   ) : (
-                    <FaMoon className="w-6 h-6" />
+                    <IoIosMoon className="w-6 h-6" />
                   )}
                 </button>
               )}
             </div>
 
-            {/* Mobile Menu Toggle */}
-            <div className="flex items-center md:hidden">
+            {/* Mobile: theme icon just left of the three-dot menu */}
+            <div className="flex items-center gap-4 md:hidden">
+              {mounted && (
+                <button
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  className="text-white dark:text-yellow-400 focus:outline-none active:scale-105"
+                  aria-label="Toggle theme"
+                >
+                  {theme === "dark" ? (
+                    <IoIosSunny className="w-6 h-6" />
+                  ) : (
+                    <IoIosMoon className="w-6 h-6" />
+                  )}
+                </button>
+              )}
               <button
                 onClick={toggleMobileMenu}
-                className="text-white focus:outline-none"
+                className="text-white focus:outline-none active:scale-105"
+                aria-label="Open menu"
+                aria-expanded={isMobileMenuOpen}
               >
-                {isMobileMenuOpen ? (
-                  <FaTimes className="w-6 h-6" />
-                ) : (
-                  <FaBars className="w-6 h-6" />
-                )}
+                {/* Always show bars; no cross icon in navbar */}
+                <HiMiniBars3 className="w-6 h-6" />
               </button>
             </div>
           </div>
+        </div>
+      </nav>
 
-          {/* Mobile Menu */}
-          {isMobileMenuOpen && (
-            <div className="md:hidden">
-              <div className="flex flex-col space-y-2 pb-4">
+      {/* Animated Mobile Sidebar + Backdrop */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="fixed inset-0 bg-black/50 z-40"
+              onClick={toggleMobileMenu}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
+
+            {/* Sidebar */}
+            <motion.aside
+              className="fixed top-0 right-0 h-full w-72 max-w-[85vw] bg-gray-900 dark:bg-gray-800 z-50 shadow-2xl"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 400, damping: 40 }}
+            >
+              {/* Close button inside sidebar (top-right) */}
+              <div className="relative">
+                <button
+                  onClick={toggleMobileMenu}
+                  className="absolute top-4 right-4 p-2 rounded-lg hover:bg-gray-700 text-white active:scale-105"
+                  aria-label="Close menu"
+                >
+                  <LiaTimesCircle className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Menu items */}
+              <div className="p-6 pt-14 flex flex-col space-y-3">
                 <button
                   onClick={() => {
                     handleNavigation("/");
-                    toggleMobileMenu;
+                    toggleMobileMenu();
                   }}
-                  className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-white text-left dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Home
                 </button>
@@ -261,9 +161,9 @@ const Navbar = () => {
                 <button
                   onClick={() => {
                     handleNavigation("/recent-matches/international");
-                    toggleMobileMenu;
+                    toggleMobileMenu();
                   }}
-                  className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-white text-left dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Recent Matches
                 </button>
@@ -271,17 +171,17 @@ const Navbar = () => {
                 <button
                   onClick={() => {
                     handleNavigation("/cricket-schedule/international");
-                    toggleMobileMenu;
+                    toggleMobileMenu();
                   }}
-                  className="text-white dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-white text-left dark:text-gray-300 hover:bg-blue-700 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Schedule
                 </button>
               </div>
-            </div>
-          )}
-        </div>
-      </nav>
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };

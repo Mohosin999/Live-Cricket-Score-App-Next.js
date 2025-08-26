@@ -71,14 +71,14 @@ const CricketArticles = () => {
   return (
     <div className="grid grid-cols-1 gap-6">
       {articles.map((article) => (
-        <div key={article.id} className="card overflow-hidden">
+        <div key={article.id} className="md:mx-4 lg:mx-8 card overflow-hidden">
           <div className="relative h-48 hover:scale-105 transition-transform duration-300">
             <Image
               src={article.image}
               alt={article.title}
               layout="fill"
               objectFit="cover"
-              className="rounded-t-lg"
+              className="md:rounded-t-lg"
             />
           </div>
           <div className="p-6">

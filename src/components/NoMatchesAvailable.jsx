@@ -2,7 +2,7 @@ import React from "react";
 
 const NoMatchesAvailable = ({ title }) => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[200px] card p-6">
+    <div className="flex flex-col items-center justify-center min-h-[200px]  p-6">
       {/* Emoji Animation */}
       <div className="text-6xl animate-bounce">😔</div>
 
