@@ -1,5 +1,7 @@
 # Live Cricket Score App - Next.js
 
+Live Link: https://cricket-live-application-z7ba-nxas4d6u0.vercel.app/
+
 ## 📑 Table of Contents
 
 - [Description](#-description)
