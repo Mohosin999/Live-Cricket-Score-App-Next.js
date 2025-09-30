@@ -18,7 +18,7 @@ A scorecard section is also implemented to show detailed match score information
 
 ## 🚀 Live Demo
 
-[![Project Screenshot](./public/crick-img/live-cricket.png)](https://cricket-live-application-z7ba-nxas4d6u0.vercel.app/)
+[![Project Screenshot](./public/crick-img/live-cricket.png)](https://cricket-live-application-z7ba.vercel.app/)
 
 ## ✨ Features
 
