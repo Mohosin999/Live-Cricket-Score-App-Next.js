@@ -41,8 +41,12 @@ A scorecard section is also implemented to show detailed match score information
 
 ## 🛠️ Tech Stack
 
-- **`Frontend:`** Next.js 14, JavaScript, Tailwind CSS, React Icons, Axios
-- **`API:`** Cricbuzz API (via RapidAPI)
+- Next.js 14
+- JavaScript
+- Tailwind CSS
+- Cricbuzz API (via RapidAPI)
+- React Icons
+- Axios
 
 ## ⚙️ Setup and Installation
 
@@ -56,6 +60,12 @@ A scorecard section is also implemented to show detailed match score information
 ✅ npm install
 
 ✅ npm run dev
+```
+
+**Access app at:**
+
+```
+http://localhost:3000
 ```
 
 ## 🔑 Environment Variables
