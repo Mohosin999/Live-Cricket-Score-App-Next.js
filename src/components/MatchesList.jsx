@@ -36,7 +36,7 @@ const MatchesList = ({ matches, routePath, loadingText, live = false }) => {
                       return (
                         <div
                           key={index}
-                          className="card mx-4 lg:mx-0 py-5 px-5 cursor-pointer active:scale-105"
+                          className="card mx-4 lg:mx-0 py-5 px-5 cursor-pointer"
                           onClick={() =>
                             handleMatchClick(matchInformation.matchInfo.matchId)
                           }
