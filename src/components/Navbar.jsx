@@ -43,7 +43,7 @@ const Navbar = () => {
             <div className="flex items-center">
               <button
                 onClick={() => handleNavigation("/")}
-                className="text-yellow-400 text-2xl font-bold active:scale-102 duration-300"
+                className="text-yellow-400 text-2xl font-bold hover:text-yellow-400/80 active:text-white"
               >
                 🏏LiveScore
               </button>
@@ -59,14 +59,18 @@ const Navbar = () => {
               </button>
 
               <button
-                onClick={() => handleNavigation("/recent-matches/international")}
+                onClick={() =>
+                  handleNavigation("/recent-matches/international")
+                }
                 className={linkClass("/recent-matches/international")}
               >
                 Recent Matches
               </button>
 
               <button
-                onClick={() => handleNavigation("/cricket-schedule/international")}
+                onClick={() =>
+                  handleNavigation("/cricket-schedule/international")
+                }
                 className={linkClass("/cricket-schedule/international")}
               >
                 Schedule
@@ -160,14 +164,18 @@ const Navbar = () => {
                 </button>
 
                 <button
-                  onClick={() => handleNavigation("/recent-matches/international")}
+                  onClick={() =>
+                    handleNavigation("/recent-matches/international")
+                  }
                   className={linkClass("/recent-matches/international")}
                 >
                   Recent Matches
                 </button>
 
                 <button
-                  onClick={() => handleNavigation("/cricket-schedule/international")}
+                  onClick={() =>
+                    handleNavigation("/cricket-schedule/international")
+                  }
                   className={linkClass("/cricket-schedule/international")}
                 >
                   Schedule

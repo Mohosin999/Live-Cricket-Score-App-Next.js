@@ -3,6 +3,7 @@ import GoToTopButton from "./GoToTopButton";
 import Wrapper from "./Wrapper";
 
 const ScoreCard = ({ matchScores }) => {
+  console.log("matchScores", matchScores);
   return (
     <Wrapper>
       <div>

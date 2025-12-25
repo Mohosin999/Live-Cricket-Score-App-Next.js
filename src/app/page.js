@@ -14,7 +14,7 @@ const Home = async () => {
 
   return (
     <Wrapper>
-      <div className="grid grid-cols-1 md:grid-cols-5 lg:gap-5 xl:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-5">
         {/* Live Matches Section */}
         <div className="md:col-span-2">
           <div className="space-y-4">
@@ -28,7 +28,7 @@ const Home = async () => {
         </div>
 
         {/* Series and Upcoming series */}
-        <div className="md:col-span-3">
+        <div className="md:col-span-3 mt-10 md:mt-0">
           <div className="space-y-4">
             <CricketArticles />
           </div>
